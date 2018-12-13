@@ -1,0 +1,646 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<witd:WITD application="Work item type editor" version="1.0" xmlns:witd="http://schemas.microsoft.com/VisualStudio/2008/workitemtracking/typedef">
+  <WORKITEMTYPE name="需求">
+    <DESCRIPTION>包括要在 MSF for CMMI Process Improvement 生命週期追蹤需求的資訊</DESCRIPTION>
+    <FIELDS>
+      <FIELD name="反覆項目路徑" refname="System.IterationPath" type="TreePath" reportable="dimension">
+        <HELPTEXT>與這個需求關聯的產品的反覆項目</HELPTEXT>
+      </FIELD>
+      <FIELD name="反覆項目 ID" refname="System.IterationId" type="Integer" />
+      <FIELD name="外部連結計數" refname="System.ExternalLinkCount" type="Integer" />
+      <FIELD name="Team 專案" refname="System.TeamProject" type="String" reportable="dimension" />
+      <FIELD name="超連結計數" refname="System.HyperLinkCount" type="Integer" />
+      <FIELD name="附加的檔案計數" refname="System.AttachedFileCount" type="Integer" />
+      <FIELD name="節點名稱" refname="System.NodeName" type="String" />
+      <FIELD name="區域路徑" refname="System.AreaPath" type="TreePath" reportable="dimension">
+        <HELPTEXT>與這個需求關聯的產品區域</HELPTEXT>
+      </FIELD>
+      <FIELD name="修訂日期" refname="System.RevisedDate" type="DateTime" reportable="detail" />
+      <FIELD name="變更日期" refname="System.ChangedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="ID" refname="System.Id" type="Integer" reportable="dimension" />
+      <FIELD name="區域 ID" refname="System.AreaId" type="Integer" />
+      <FIELD name="通過授權為" refname="System.AuthorizedAs" type="String" syncnamechanges="true" />
+      <FIELD name="標題" refname="System.Title" type="String" reportable="dimension">
+        <HELPTEXT>需求的簡短描述，用於區別清單或報告中的需求</HELPTEXT>
+        <REQUIRED />
+      </FIELD>
+      <FIELD name="狀況" refname="System.State" type="String" reportable="dimension">
+        <HELPTEXT>這個需求的工作流程狀態</HELPTEXT>
+      </FIELD>
+      <FIELD name="授權日期" refname="System.AuthorizedDate" type="DateTime" />
+      <FIELD name="浮水印" refname="System.Watermark" type="Integer" />
+      <FIELD name="修訂" refname="System.Rev" type="Integer" reportable="dimension" />
+      <FIELD name="變更者" refname="System.ChangedBy" type="String" syncnamechanges="true" reportable="dimension">
+        <ALLOWEXISTINGVALUE />
+        <VALIDUSER />
+      </FIELD>
+      <FIELD name="原因" refname="System.Reason" type="String" reportable="dimension">
+        <HELPTEXT>這個需求處於目前狀態的原因</HELPTEXT>
+      </FIELD>
+      <FIELD name="指派給" refname="System.AssignedTo" type="String" syncnamechanges="true" reportable="dimension">
+        <HELPTEXT>目前正在處理此需求的人員</HELPTEXT>
+        <ALLOWEXISTINGVALUE />
+        <VALIDUSER />
+      </FIELD>
+      <FIELD name="工作項目類型" refname="System.WorkItemType" type="String" reportable="dimension" />
+      <FIELD name="建立日期" refname="System.CreatedDate" type="DateTime" reportable="dimension" />
+      <FIELD name="建立者" refname="System.CreatedBy" type="String" syncnamechanges="true" reportable="dimension" />
+      <FIELD name="描述" refname="System.Description" type="HTML">
+        <HELPTEXT>實作此項目時啟用的使用者活動或條件約束，包含支援文件的連結</HELPTEXT>
+      </FIELD>
+      <FIELD name="記錄" refname="System.History" type="History">
+        <HELPTEXT>討論區和其他歷史資訊</HELPTEXT>
+      </FIELD>
+      <FIELD name="關聯連結計數" refname="System.RelatedLinkCount" type="Integer" />
+      <FIELD name="標記" refname="System.Tags" type="PlainText" />
+      <FIELD name="面板資料行" refname="System.BoardColumn" type="String" reportable="dimension" />
+      <FIELD name="面板資料行已完成" refname="System.BoardColumnDone" type="Boolean" reportable="dimension" />
+      <FIELD name="面板通道" refname="System.BoardLane" type="String" reportable="dimension" />
+      <FIELD name="狀況變更日期" refname="Microsoft.VSTS.Common.StateChangeDate" type="DateTime">
+        <WHENNOTCHANGED field="System.State">
+          <READONLY />
+        </WHENNOTCHANGED>
+        <WHENCHANGED field="System.State">
+          <SERVERDEFAULT from="clock" />
+        </WHENCHANGED>
+      </FIELD>
+      <FIELD name="啟動日期" refname="Microsoft.VSTS.Common.ActivatedDate" type="DateTime" reportable="dimension">
+        <WHENNOTCHANGED field="System.State">
+          <READONLY />
+        </WHENNOTCHANGED>
+      </FIELD>
+      <FIELD name="啟動者" refname="Microsoft.VSTS.Common.ActivatedBy" type="String" syncnamechanges="true" reportable="dimension">
+        <WHENNOTCHANGED field="System.State">
+          <ALLOWEXISTINGVALUE />
+          <READONLY />
+        </WHENNOTCHANGED>
+      </FIELD>
+      <FIELD name="解決日期" refname="Microsoft.VSTS.Common.ResolvedDate" type="DateTime" reportable="dimension">
+        <WHENNOTCHANGED field="System.State">
+          <READONLY />
+        </WHENNOTCHANGED>
+      </FIELD>
+      <FIELD name="解決者" refname="Microsoft.VSTS.Common.ResolvedBy" type="String" syncnamechanges="true" reportable="dimension">
+        <WHENNOTCHANGED field="System.State">
+          <ALLOWEXISTINGVALUE />
+          <READONLY />
+        </WHENNOTCHANGED>
+      </FIELD>
+      <FIELD name="解決原因" refname="Microsoft.VSTS.Common.ResolvedReason" type="String" reportable="dimension" />
+      <FIELD name="關閉日期" refname="Microsoft.VSTS.Common.ClosedDate" type="DateTime" reportable="dimension">
+        <WHENNOTCHANGED field="System.State">
+          <READONLY />
+        </WHENNOTCHANGED>
+      </FIELD>
+      <FIELD name="關閉者" refname="Microsoft.VSTS.Common.ClosedBy" type="String" syncnamechanges="true" reportable="dimension">
+        <WHENNOTCHANGED field="System.State">
+          <ALLOWEXISTINGVALUE />
+          <READONLY />
+        </WHENNOTCHANGED>
+      </FIELD>
+      <FIELD name="優先權" refname="Microsoft.VSTS.Common.Priority" type="Integer" reportable="dimension">
+        <HELPTEXT>依據商務目標納入需求的優先順序</HELPTEXT>
+        <REQUIRED />
+        <DEFAULT from="value" value="2" />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="1" />
+          <LISTITEM value="2" />
+          <LISTITEM value="3" />
+          <LISTITEM value="4" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="分級" refname="Microsoft.VSTS.Common.Triage" type="String" reportable="dimension">
+        <HELPTEXT>分級需求的狀態</HELPTEXT>
+        <REQUIRED />
+        <DEFAULT from="value" value="暫止" />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="已分級" />
+          <LISTITEM value="已接收的資訊" />
+          <LISTITEM value="詳細資訊" />
+          <LISTITEM value="暫止" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="堆疊順位" refname="Microsoft.VSTS.Common.StackRank" type="Double" reportable="dimension">
+        <HELPTEXT>先處理具有低數值堆疊順位的項目。以分級設定。</HELPTEXT>
+      </FIELD>
+      <FIELD name="整合組建" refname="Microsoft.VSTS.Build.IntegrationBuild" type="String" reportable="dimension">
+        <HELPTEXT>已整合需求的組建</HELPTEXT>
+        <SUGGESTEDVALUES expanditems="true">
+          <LISTITEM value="&lt;無&gt;" />
+        </SUGGESTEDVALUES>
+      </FIELD>
+      <FIELD name="大小" refname="Microsoft.VSTS.Scheduling.Size" type="Double" reportable="measure" formula="sum">
+        <HELPTEXT>實作此需求的估計工作大小</HELPTEXT>
+      </FIELD>
+      <FIELD name="原始評估" refname="Microsoft.VSTS.Scheduling.OriginalEstimate" type="Double" reportable="measure" formula="sum">
+        <HELPTEXT>評估工作量 (以工時為單位)</HELPTEXT>
+      </FIELD>
+      <FIELD name="已封鎖" refname="Microsoft.VSTS.CMMI.Blocked" type="String" reportable="dimension">
+        <DEFAULT from="value" value="否" />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="否" />
+          <LISTITEM value="是" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="開始日期" refname="Microsoft.VSTS.Scheduling.StartDate" type="DateTime" reportable="dimension">
+        <REQUIRED for="[global]\專案集合有效使用者" />
+      </FIELD>
+      <FIELD name="完成日期" refname="Microsoft.VSTS.Scheduling.FinishDate" type="DateTime" reportable="dimension">
+        <REQUIRED for="[global]\專案集合有效使用者" />
+      </FIELD>
+      <FIELD name="需求類型" refname="Microsoft.VSTS.CMMI.RequirementType" type="String" reportable="dimension">
+        <REQUIRED />
+        <DEFAULT from="value" value="功能" />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="介面" />
+          <LISTITEM value="功能" />
+          <LISTITEM value="安全" />
+          <LISTITEM value="安全性" />
+          <LISTITEM value="服務品質" />
+          <LISTITEM value="特殊功能" />
+          <LISTITEM value="商務目標" />
+          <LISTITEM value="情節" />
+          <LISTITEM value="操作" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="已認可" refname="Microsoft.VSTS.CMMI.Committed" type="String">
+        <HELPTEXT>是否認可需求?</HELPTEXT>
+        <REQUIRED />
+        <DEFAULT from="value" value="否" />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="否" />
+          <LISTITEM value="是" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="影響評量 HTML" refname="Microsoft.VSTS.CMMI.ImpactAssessmentHtml" type="HTML" />
+      <FIELD name="使用者接受度測試" refname="Microsoft.VSTS.CMMI.UserAcceptanceTest" type="String">
+        <REQUIRED />
+        <DEFAULT from="value" value="未就緒" />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="失敗" />
+          <LISTITEM value="未就緒" />
+          <LISTITEM value="成功" />
+          <LISTITEM value="略過" />
+          <LISTITEM value="就緒" />
+        </ALLOWEDVALUES>
+      </FIELD>
+      <FIELD name="主題專家 1" refname="Microsoft.VSTS.CMMI.SubjectMatterExpert1" type="String" syncnamechanges="true">
+        <ALLOWEXISTINGVALUE />
+        <VALIDUSER />
+      </FIELD>
+      <FIELD name="主題專家 2" refname="Microsoft.VSTS.CMMI.SubjectMatterExpert2" type="String" syncnamechanges="true">
+        <ALLOWEXISTINGVALUE />
+        <VALIDUSER />
+      </FIELD>
+      <FIELD name="主題專家 3" refname="Microsoft.VSTS.CMMI.SubjectMatterExpert3" type="String" syncnamechanges="true">
+        <ALLOWEXISTINGVALUE />
+        <VALIDUSER />
+      </FIELD>
+      <FIELD name="值區" refname="Microsoft.VSTS.Common.ValueArea" type="String">
+        <HELPTEXT>商務 = 為使用者或其他系統提供值; 架構 = 支援其他需求或元件的工作</HELPTEXT>
+        <REQUIRED />
+        <DEFAULT from="value" value="商務" />
+        <ALLOWEDVALUES expanditems="true">
+          <LISTITEM value="架構" />
+          <LISTITEM value="商務" />
+        </ALLOWEDVALUES>
+      </FIELD>
+    </FIELDS>
+    <WORKFLOW>
+      <STATES>
+        <STATE value="已關閉">
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedBy">
+              <ALLOWEXISTINGVALUE />
+              <COPY from="currentuser" />
+              <VALIDUSER />
+              <REQUIRED />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <SERVERDEFAULT from="clock" />
+              <REQUIRED />
+            </FIELD>
+          </FIELDS>
+        </STATE>
+        <STATE value="已解決">
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedBy">
+              <ALLOWEXISTINGVALUE />
+              <COPY from="currentuser" />
+              <VALIDUSER />
+              <REQUIRED />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedReason">
+              <COPY from="field" field="System.Reason" />
+            </FIELD>
+            <FIELD refname="System.AssignedTo">
+              <ALLOWEXISTINGVALUE />
+              <REQUIRED />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedDate">
+              <SERVERDEFAULT from="clock" />
+              <REQUIRED />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedBy">
+              <ALLOWEXISTINGVALUE />
+              <EMPTY />
+            </FIELD>
+          </FIELDS>
+        </STATE>
+        <STATE value="作用中">
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ActivatedBy">
+              <ALLOWEXISTINGVALUE />
+              <COPY from="currentuser" />
+              <VALIDUSER />
+              <REQUIRED />
+            </FIELD>
+            <FIELD refname="System.AssignedTo">
+              <ALLOWEXISTINGVALUE />
+              <REQUIRED />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ActivatedDate">
+              <SERVERDEFAULT from="clock" />
+              <REQUIRED />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedDate">
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedBy">
+              <ALLOWEXISTINGVALUE />
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedReason">
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedBy">
+              <ALLOWEXISTINGVALUE />
+              <EMPTY />
+            </FIELD>
+          </FIELDS>
+        </STATE>
+        <STATE value="已提議">
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ActivatedDate">
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ActivatedBy">
+              <ALLOWEXISTINGVALUE />
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedDate">
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedBy">
+              <ALLOWEXISTINGVALUE />
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedDate">
+              <EMPTY />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ClosedBy">
+              <ALLOWEXISTINGVALUE />
+              <EMPTY />
+            </FIELD>
+          </FIELDS>
+        </STATE>
+      </STATES>
+      <TRANSITIONS>
+        <TRANSITION from="已解決" to="已關閉">
+          <REASONS>
+            <DEFAULTREASON value="驗證測試成功" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="作用中" to="已關閉">
+          <REASONS>
+            <DEFAULTREASON value="分隔" />
+            <REASON value="已放棄" />
+            <REASON value="超出範圍" />
+          </REASONS>
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedDate">
+              <SERVERDEFAULT from="clock" />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedBy">
+              <ALLOWEXISTINGVALUE />
+              <SERVERDEFAULT from="currentuser" />
+            </FIELD>
+          </FIELDS>
+        </TRANSITION>
+        <TRANSITION from="已提議" to="已關閉">
+          <REASONS>
+            <DEFAULTREASON value="已拒絕" />
+          </REASONS>
+          <FIELDS>
+            <FIELD refname="Microsoft.VSTS.Common.ActivatedDate">
+              <SERVERDEFAULT from="clock" />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ActivatedBy">
+              <ALLOWEXISTINGVALUE />
+              <SERVERDEFAULT from="currentuser" />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedDate">
+              <SERVERDEFAULT from="clock" />
+            </FIELD>
+            <FIELD refname="Microsoft.VSTS.Common.ResolvedBy">
+              <ALLOWEXISTINGVALUE />
+              <SERVERDEFAULT from="currentuser" />
+            </FIELD>
+          </FIELDS>
+        </TRANSITION>
+        <TRANSITION from="作用中" to="已解決">
+          <REASONS>
+            <DEFAULTREASON value="程式碼完成和系統測試成功" />
+          </REASONS>
+          <ACTIONS>
+            <ACTION value="Microsoft.VSTS.Actions.Checkin" />
+          </ACTIONS>
+        </TRANSITION>
+        <TRANSITION from="已關閉" to="作用中">
+          <REASONS>
+            <DEFAULTREASON value="錯誤的關閉" />
+            <REASON value="在範圍中重新引入" />
+          </REASONS>
+          <FIELDS>
+            <FIELD refname="System.AssignedTo">
+              <COPY from="field" field="Microsoft.VSTS.Common.ClosedBy" />
+            </FIELD>
+          </FIELDS>
+        </TRANSITION>
+        <TRANSITION from="已解決" to="作用中">
+          <REASONS>
+            <DEFAULTREASON value="驗證測試失敗" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="已提議" to="作用中">
+          <REASONS>
+            <DEFAULTREASON value="已接受" />
+            <REASON value="調查" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="作用中" to="已提議">
+          <REASONS>
+            <DEFAULTREASON value="調查完成" />
+            <REASON value="延後" />
+          </REASONS>
+        </TRANSITION>
+        <TRANSITION from="" to="已提議">
+          <REASONS>
+            <DEFAULTREASON value="新增" />
+          </REASONS>
+          <FIELDS>
+            <FIELD refname="System.AssignedTo">
+              <DEFAULT from="currentuser" />
+            </FIELD>
+          </FIELDS>
+        </TRANSITION>
+      </TRANSITIONS>
+    </WORKFLOW>
+    <FORM>
+      <Layout HideControlBorders="true" HideReadOnlyEmptyFields="true">
+        <Group Margin="(0,0,0,5)">
+          <Column PercentWidth="90">
+            <Control FieldName="System.Title" Type="FieldControl" LabelPosition="Top" ControlFontSize="large" EmptyText="&lt;在此輸入標題&gt;" />
+          </Column>
+          <Column PercentWidth="10">
+            <Control FieldName="System.ID" Type="FieldControl" LabelPosition="Top" ControlFontSize="large" />
+          </Column>
+        </Group>
+        <Group>
+          <Column PercentWidth="70">
+            <TabGroup>
+              <Tab Label="描述">
+                <Control FieldName="System.Description" Type="HtmlFieldControl" LabelPosition="Top" Dock="Fill" />
+              </Tab>
+              <Tab Label="影響評量">
+                <Control FieldName="Microsoft.VSTS.CMMI.ImpactAssessmentHtml" Type="HtmlFieldControl" LabelPosition="Top" Dock="Fill" />
+              </Tab>
+              <Tab Label="分鏡腳本">
+                <Control Type="LinksControl" LabelPosition="Top" Name="StoryboardsControl">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn LinkAttribute="System.Links.Comment" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="excludeAll" />
+                    <ExternalLinkFilters FilterType="include">
+                      <Filter LinkType="Storyboard" />
+                    </ExternalLinkFilters>
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="測試案例">
+                <Control Type="LinksControl" LabelPosition="Top" Name="TestedBy">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.ID" />
+                      <LinkColumn RefName="System.WorkItemType" />
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn RefName="System.AssignedTo" />
+                      <LinkColumn RefName="System.State" />
+                      <LinkColumn LinkAttribute="System.Links.Comment" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="include">
+                      <Filter LinkType="Microsoft.VSTS.Common.TestedBy" FilterOn="forwardname" />
+                    </WorkItemLinkFilters>
+                    <ExternalLinkFilters FilterType="excludeAll" />
+                    <WorkItemTypeFilters FilterType="include">
+                      <Filter WorkItemType="測試案例" />
+                    </WorkItemTypeFilters>
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="其他">
+                <Group>
+                  <Column PercentWidth="50">
+                    <Group Label="建置和測試">
+                      <Column PercentWidth="100">
+                        <Control FieldName="Microsoft.VSTS.Build.IntegrationBuild" Type="FieldControl" Label="整合於" LabelPosition="Left" />
+                        <Control FieldName="Microsoft.VSTS.CMMI.UserAcceptanceTest" Type="FieldControl" Label="使用者接受度測試" LabelPosition="Left" />
+                      </Column>
+                    </Group>
+                    <Group Label="投入時間 (小時)">
+                      <Column PercentWidth="100">
+                        <Control FieldName="Microsoft.VSTS.Scheduling.OriginalEstimate" Type="FieldControl" Label="原始估計" LabelPosition="Left" />
+                      </Column>
+                    </Group>
+                  </Column>
+                  <Column PercentWidth="50">
+                    <Group Label="主題專家">
+                      <Column PercentWidth="100">
+                        <Control FieldName="Microsoft.VSTS.CMMI.SubjectMatterExpert1" Type="FieldControl" Label="主題專家 1" LabelPosition="Left" />
+                        <Control FieldName="Microsoft.VSTS.CMMI.SubjectMatterExpert2" Type="FieldControl" Label="主題專家 2" LabelPosition="Left" />
+                        <Control FieldName="Microsoft.VSTS.CMMI.SubjectMatterExpert3" Type="FieldControl" Label="主題專家 3" LabelPosition="Left" />
+                      </Column>
+                    </Group>
+                    <Group Label="排程">
+                      <Column PercentWidth="100">
+                        <Control FieldName="Microsoft.VSTS.Scheduling.StartDate" Type="DateTimeControl" Label="開始日期" LabelPosition="Left" />
+                        <Control FieldName="Microsoft.VSTS.Scheduling.FinishDate" Type="DateTimeControl" Label="完成日期" LabelPosition="Left" />
+                      </Column>
+                    </Group>
+                  </Column>
+                </Group>
+              </Tab>
+              <Tab Label="所有連結">
+                <Control Type="LinksControl" LabelPosition="Top" Name="GeneralLinks">
+                  <LinksControlOptions>
+                    <LinkColumns>
+                      <LinkColumn RefName="System.ID" />
+                      <LinkColumn RefName="System.WorkItemType" />
+                      <LinkColumn RefName="System.Title" />
+                      <LinkColumn RefName="System.AssignedTo" />
+                      <LinkColumn RefName="System.State" />
+                      <LinkColumn LinkAttribute="System.Links.Comment" />
+                    </LinkColumns>
+                    <WorkItemLinkFilters FilterType="includeAll" />
+                    <ExternalLinkFilters FilterType="includeAll" />
+                    <WorkItemTypeFilters FilterType="includeAll" />
+                  </LinksControlOptions>
+                </Control>
+              </Tab>
+              <Tab Label="附件">
+                <Control Type="AttachmentsControl" LabelPosition="Top" />
+              </Tab>
+              <Tab Label="記錄">
+                <Control FieldName="System.History" Type="WorkItemLogControl" LabelPosition="Top" Dock="Fill" />
+              </Tab>
+            </TabGroup>
+          </Column>
+          <Column PercentWidth="30">
+            <Group Margin="(5,0,0,0)">
+              <Column PercentWidth="100">
+                <Group Label="狀態">
+                  <Column PercentWidth="100">
+                    <Control FieldName="System.AssignedTo" Type="FieldControl" Label="指派給(&amp;G)" LabelPosition="Left" />
+                    <Control FieldName="System.State" Type="FieldControl" Label="狀態(&amp;E)" LabelPosition="Left" />
+                    <Control FieldName="System.Reason" Type="FieldControl" Label="原因" LabelPosition="Left" />
+                  </Column>
+                </Group>
+                <Group Label="計劃">
+                  <Column PercentWidth="100">
+                    <Control FieldName="Microsoft.VSTS.Scheduling.Size" Type="FieldControl" Label="大小" LabelPosition="Left" />
+                    <Control FieldName="Microsoft.VSTS.Common.Priority" Type="FieldControl" Label="優先順序" LabelPosition="Left" />
+                    <Control FieldName="Microsoft.VSTS.Common.Triage" Type="FieldControl" Label="分級" LabelPosition="Left" />
+                    <Control FieldName="Microsoft.VSTS.CMMI.Blocked" Type="FieldControl" Label="已封鎖" LabelPosition="Left" />
+                    <Control FieldName="Microsoft.VSTS.CMMI.Committed" Type="FieldControl" Label="已認可" LabelPosition="Left" />
+                  </Column>
+                </Group>
+                <Group Label="類別">
+                  <Column PercentWidth="100">
+                    <Control FieldName="System.AreaPath" Type="WorkItemClassificationControl" Label="區域(&amp;A)" LabelPosition="Left" />
+                    <Control FieldName="System.IterationPath" Type="WorkItemClassificationControl" Label="反覆項目(&amp;R)" LabelPosition="Left" />
+                    <Control FieldName="Microsoft.VSTS.CMMI.RequirementType" Type="FieldControl" Label="類型" LabelPosition="Left" />
+                    <Control FieldName="Microsoft.VSTS.Common.ValueArea" Type="FieldControl" Label="值區" LabelPosition="Left" />
+                  </Column>
+                </Group>
+              </Column>
+            </Group>
+          </Column>
+        </Group>
+      </Layout>
+      <WebLayout ShowEmptyReadOnlyFields="false">
+        <SystemControls>
+          <Control Type="FieldControl" FieldName="System.Title" EmptyText="&lt;在此輸入標題&gt;" />
+          <Control Label="指派給(&amp;G)" Type="FieldControl" FieldName="System.AssignedTo" />
+          <Control Label="狀態(&amp;E)" Type="FieldControl" FieldName="System.State" />
+          <Control Label="原因" Type="FieldControl" FieldName="System.Reason" />
+          <Control Label="區域(&amp;A)" Type="WorkItemClassificationControl" FieldName="System.AreaPath" />
+          <Control Label="反覆項目(&amp;R)" Type="WorkItemClassificationControl" FieldName="System.IterationPath" />
+          <Control Label="連結" Type="LinksControl" Name="Links" />
+          <Control Label="附件" Type="AttachmentsControl" Name="Attachments" />
+          <Control Label="記錄" Type="WorkItemLogControl" FieldName="System.History" />
+        </SystemControls>
+        <Page Label="詳細資料" LayoutMode="FirstColumnWide">
+          <Section>
+            <Group Label="描述">
+              <Control Type="HtmlFieldControl" FieldName="System.Description" />
+            </Group>
+            <Group Label="影響評量">
+              <Control Type="HtmlFieldControl" FieldName="Microsoft.VSTS.CMMI.ImpactAssessmentHtml" />
+            </Group>
+          </Section>
+          <Section>
+            <Group Label="狀態">
+              <Control Label="原因" Type="FieldControl" FieldName="System.Reason" />
+            </Group>
+            <Group Label="類別">
+              <Control Label="類型" Type="FieldControl" FieldName="Microsoft.VSTS.CMMI.RequirementType" />
+              <Control Label="值區" Type="FieldControl" FieldName="Microsoft.VSTS.Common.ValueArea" />
+            </Group>
+            <Group Label="投入時間 (小時)">
+              <Control Label="原始估計" Type="FieldControl" FieldName="Microsoft.VSTS.Scheduling.OriginalEstimate" />
+            </Group>
+            <Group Label="排程">
+              <Control Label="開始日期" Type="DateTimeControl" FieldName="Microsoft.VSTS.Scheduling.StartDate" />
+              <Control Label="完成日期" Type="DateTimeControl" FieldName="Microsoft.VSTS.Scheduling.FinishDate" />
+            </Group>
+          </Section>
+          <Section>
+            <Group Label="開發">
+              <Control Type="LinksControl" Name="Development">
+                <LinksControlOptions ViewMode="Dynamic" ZeroDataExperience="Development" ShowCallToAction="true">
+                  <ListViewOptions GroupLinks="false">
+                  </ListViewOptions>
+                  <LinkFilters>
+                    <ExternalLinkFilter Type="Build" />
+                    <ExternalLinkFilter Type="Integrated in build" />
+                    <ExternalLinkFilter Type="Pull Request" />
+                    <ExternalLinkFilter Type="Branch" />
+                    <ExternalLinkFilter Type="Fixed in Commit" />
+                    <ExternalLinkFilter Type="Fixed in Changeset" />
+                    <ExternalLinkFilter Type="Source Code File" />
+                    <ExternalLinkFilter Type="Found in build" />
+                  </LinkFilters>
+                </LinksControlOptions>
+              </Control>
+            </Group>
+            <Group Label="相關的工作">
+              <Control Type="LinksControl" Name="Related Work">
+                <LinksControlOptions>
+                  <LinkFilters>
+                    <WorkItemLinkFilter Type="System.LinkTypes.Duplicate-Reverse" />
+                    <WorkItemLinkFilter Type="System.LinkTypes.Hierarchy-Reverse" />
+                    <WorkItemLinkFilter Type="Microsoft.VSTS.Common.TestedBy-Forward" />
+                    <WorkItemLinkFilter Type="Microsoft.VSTS.Common.TestedBy-Reverse" />
+                    <WorkItemLinkFilter Type="System.LinkTypes.Hierarchy-Forward" />
+                    <WorkItemLinkFilter Type="System.LinkTypes.Duplicate-Forward" />
+                    <WorkItemLinkFilter Type="System.LinkTypes.Dependency" />
+                    <WorkItemLinkFilter Type="System.LinkTypes.Related" />
+                  </LinkFilters>
+                  <Columns>
+                    <Column Name="System.State" />
+                    <Column Name="System.ChangedDate" />
+                    <Column Name="System.Links.Comment" />
+                  </Columns>
+                </LinksControlOptions>
+              </Control>
+            </Group>
+            <Group Label="計劃">
+              <Control Label="大小" Type="FieldControl" FieldName="Microsoft.VSTS.Scheduling.Size" />
+              <Control Label="優先順序" Type="FieldControl" FieldName="Microsoft.VSTS.Common.Priority" />
+              <Control Label="分級" Type="FieldControl" FieldName="Microsoft.VSTS.Common.Triage" />
+              <Control Label="已封鎖" Type="FieldControl" FieldName="Microsoft.VSTS.CMMI.Blocked" />
+              <Control Label="已認可" Type="FieldControl" FieldName="Microsoft.VSTS.CMMI.Committed" />
+            </Group>
+            <Group Label="建置和測試">
+              <Control Label="整合於" Type="FieldControl" FieldName="Microsoft.VSTS.Build.IntegrationBuild" />
+              <Control Label="使用者接受度測試" Type="FieldControl" FieldName="Microsoft.VSTS.CMMI.UserAcceptanceTest" />
+            </Group>
+            <Group Label="主題專家">
+              <Control Label="主題專家 1" Type="FieldControl" FieldName="Microsoft.VSTS.CMMI.SubjectMatterExpert1" />
+              <Control Label="主題專家 2" Type="FieldControl" FieldName="Microsoft.VSTS.CMMI.SubjectMatterExpert2" />
+              <Control Label="主題專家 3" Type="FieldControl" FieldName="Microsoft.VSTS.CMMI.SubjectMatterExpert3" />
+            </Group>
+          </Section>
+        </Page>
+      </WebLayout>
+    </FORM>
+  </WORKITEMTYPE>
+</witd:WITD>
